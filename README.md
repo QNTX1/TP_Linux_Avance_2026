@@ -251,11 +251,15 @@ htop
 ```text
 Votre commande :
 
+	echo $$
 
 Votre résultat :
 
+	3135
 
 Interprétation :
+
+	La variable $$ contient le PID 
 
 ```
 
@@ -264,11 +268,16 @@ Interprétation :
 ```text
 Votre commande :
 
+	ps -o pid,ppid,comm -p $$
 
 Votre résultat :
 
+	PID -> 3135   
+	PPID COMMAND -> 1003 bash
 
 Interprétation :
+
+	Notre shell bash (PID 3135) a comme parent le processus avec le PID 1003.
 
 ```
 
