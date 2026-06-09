@@ -17,12 +17,8 @@ Cet atelier est **interactif** : à chaque exercice vous trouverez un bloc de la
 ```text
 Votre commande :
 
-	uname -r
-
 Votre résultat :
 	
-	6.8.0-1052-azure
-
 Interprétation :
 
 ```
@@ -119,9 +115,11 @@ cat /proc/cmdline
 ```text
 Votre commande :
 
+	uname -r
 
 Votre résultat :
 
+	6.8.0-1052-azure
 
 Interprétation :
 
