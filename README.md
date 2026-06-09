@@ -286,11 +286,16 @@ Interprétation :
 ```text
 Votre commande :
 
+	cat /proc/1/status | grep Threads
 
 Votre résultat :
 
+	Threads: 1
 
 Interprétation :
+	
+	Le processus PID 1 (qui est sh dans notre Codespace) n'utilise qu'un
+seul thread.
 
 ```
 
@@ -299,11 +304,22 @@ Interprétation :
 ```text
 Votre commande :
 
+	ps -eo pid,comm,rss --sort=-rss | head -5
 
 Votre résultat :
 
+	PID -> COMMAND -> RSS
+	15120 -> MainThread -> 405092
+	969 -> MainThread -> 183584
+	15176 -> MainThread -> 91076
+	23 -> dockerd -> 90632
 
 Interprétation :
+
+	Le top 3 est :
+		1. PID 15120 : 405092 Ko (~395 Mo) — probablement VS Code
+		2. PID 969   : 183584 Ko (~179 Mo) — un autre processus VS Code
+		3. PID 15176 : 91076  Ko (~89 Mo)  — un processus VS Code
 
 ```
 
@@ -312,11 +328,16 @@ Interprétation :
 ```text
 Votre commande :
 
+	cat /proc/$$/limits | grep "open files"
 
 Votre résultat :
 
+	Max open files          2048          2048          files
 
 Interprétation :
+
+	La limite molle (soft limit) et la limite dure (hard limit) de nofile
+sont toutes les deux à 2048.
 
 ```
 
@@ -352,11 +373,29 @@ kill -SIGKILL $!
 ```text
 Votre commande :
 
+	sleep 300 &
+	PID_SLEEP=$!
+	kill -SIGSTOP $PID_SLEEP
+	ps -o pid,stat,comm -p $PID_SLEEP
+
+	kill -SIGCONT $PID_SLEEP
+	ps -o pid,stat,comm -p $PID_SLEEP
 
 Votre résultat :
 
+	Après SIGSTOP :
+  		PID STAT COMMAND
+ 		4283 T    sleep
+
+	Après SIGCONT :
+  		PID STAT COMMAND
+		4283 S    sleep
 
 Interprétation :
+
+	Après SIGSTOP, l'état du processus passe à T (Stopped) — le processus
+est complètement suspendu et ne consomme plus de CPU. Il reste en mémoire
+mais n'est plus exécuté par le scheduler.
 
 ```
 
