@@ -184,11 +184,20 @@ git commit -m "chore: init livrables/"
 ```text
 Votre commande :
 
+	git log --oneline -5
 
 Votre résultat :
 
+	3ff5135 (HEAD -> main, origin/main, origin/HEAD) chore: init livrables/
+b11eb6e 0.2c
+	7ebf7fc question 0.2b
+	14a2c0e question 0.2
+	ef123e1 question0.2
 
 Interprétation :
+
+	L'historique git montre les 5 derniers commits du dépôt. Le commit le plus
+récent (HEAD) est "chore: init livrables/
 
 ```
 
