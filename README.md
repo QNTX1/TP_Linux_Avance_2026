@@ -149,11 +149,22 @@ Interprétation :
 ```text
 Votre commande :
 
+	cat /proc/1/cgroup
+	cat /proc/1/status
 
 Votre résultat :
-
+	
+	cgroup -> 0::/init
+	status -> 000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+		Mems_allowed_list:      0
+		voluntary_ctxt_switches:        1821
+		nonvoluntary_ctxt_switches:     529
+		x86_Thread_features:
+		x86_Thread_features_locked: 
 
 Interprétation :
+
+	Non, le PID 1 n'est pas systemd. Dans ce Codespace, le PID 1 est sh	
 
 ```
 
