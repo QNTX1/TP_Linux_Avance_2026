@@ -130,11 +130,17 @@ Interprétation :
 ```text
 Votre commande :
 
+	nproc -> CPU
+	free -h -> RAM
 
 Votre résultat :
 
+	2 -> CPU 
+	7.8Gi -> Total RAM
 
 Interprétation :
+
+	Le Codespace dispose de 2 vCPUs et la RAM totale est de 7.8 Go, dont 1.8 Go utilisés et 5.6 Go disponibles.
 
 ```
 
