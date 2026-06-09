@@ -404,10 +404,19 @@ mais n'est plus exécuté par le scheduler.
 ```text
 Votre commande :
 
+	sleep 60
+	(Ctrl+Z)
+	bg
+	jobs -l
+	fg
 
 Votre résultat :
 
-
+	^C
+	bash: bg: job 1 already in background
+	[1]+ 4283 Running    sleep 300 &
+	sleep 300
+	
 Interprétation :
 
 ```
@@ -417,8 +426,13 @@ Interprétation :
 ```text
 Votre résultat :
 
+	D'après man 7 signal : "The signals SIGKILL and SIGSTOP cannot be caught,
+blocked, or ignored."
 
 Interprétation :
+
+SIGKILL et SIGSTOP sont gérés directement par le noyau Linux (kernel),
+et non par le processus lui-même.
 
 ```
 
@@ -490,11 +504,26 @@ kill -SIGTERM $(pgrep -f signal_demo.sh)
 ```text
 Votre commande :
 
+~/scripts/signal_demo.sh &
+sleep 6
+kill -SIGHUP $(pgrep -f signal_demo.sh)
+sleep 3
+kill -SIGTERM $(pgrep -f signal_demo.sh)
+
 
 Votre résultat :
 
+[15:12:07] En cours... (itération 25)
+[15:12:12] SIGHUP reçu : rechargement de la configuration...
+[15:12:13] Configuration rechargée.
+[15:12:13] En cours... (itération 26)
+[15:12:18] En cours... (itération 27)
+[15:12:23] Signal reçu : nettoyage en cours...
+[15:12:23] Nettoyage terminé. Bye.
 
 Interprétation :
+
+
 
 ```
 
